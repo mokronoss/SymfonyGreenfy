@@ -816,7 +816,15 @@ ol {
 .slicknav_menu {
 	display: none;
 }
-
+/*-------------------- flag ----------------*/
+.ht-right .lan-selector .ddcommon .ddTitle .ddTitleText img {
+	width: 32px;
+	height: 14px;
+}
+.ht-right .lan-selector .ddcommon .ddChild ul li img{
+	width: 32px;
+	height: 14px;
+}
 /*---------------------
   Hero Section
 -----------------------*/
@@ -1005,6 +1013,7 @@ ol {
 
 .single-banner img {
 	min-width: 100%;
+	min-height: 300px;
 }
 
 .single-banner .inner-text {
