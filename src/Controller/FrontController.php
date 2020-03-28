@@ -15,13 +15,13 @@ class FrontController extends AbstractController
     {
         return $this->render('front/index.html.twig');
     }
-    // /**
-    //  * @Route("/blog-details", name="blog-details")
-    //  */
-    // public function blogDetails()
-    // {
-    //     return $this->render('front/blog_details.html.twig');
-    // }
+    /**
+     * @Route("/blog-details", name="blog-details")
+     */
+    public function blogDetails()
+    {
+        return $this->render('front/blog_details.html.twig');
+    }
 
     /**
      * @Route("/blog", name="blog")
@@ -31,13 +31,13 @@ class FrontController extends AbstractController
         return $this->render('front/blog.html.twig');
     }
 
-    // /**
-    //  * @Route("/check-out", name="check-out")
-    //  */
-    // public function checkOut()
-    // {
-    //     return $this->render('front/check_out.html.twig');
-    // }
+    /**
+     * @Route("/check-out", name="check-out")
+     */
+    public function checkOut()
+    {
+        return $this->render('front/check_out.html.twig');
+    }
 
 
     /**
@@ -49,7 +49,7 @@ class FrontController extends AbstractController
     }
 
     /**
-     * @Route("/faq", name="contact")
+     * @Route("/faq", name="faq")
      */
     public function faq()
     {
@@ -89,12 +89,12 @@ class FrontController extends AbstractController
         return $this->render('front/shop.html.twig');
     }
 
-    // /**
-    //  * @Route("/shopping-cart", name="shopping-cart")
-    //  */
+    /**
+     * @Route("/shopping-cart", name="shopping-cart")
+     */
     
-    // public function shoppingCart()
-    // {
-    //     return $this->render('front/shopping_cart.html.twig');
-    // }
+    public function shoppingCart()
+    {
+        return $this->render('front/shopping_cart.html.twig');
+    }
 }
