@@ -31,6 +31,16 @@ class OrderLine
      */
     private $actualPriceVAT;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Order", inversedBy="ListOfOrderLines")
+     */
+    private $orderNumber;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Flower", inversedBy="ListOfOrderLines")
+     */
+    private $flower;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +78,30 @@ class OrderLine
     public function setActualPriceVAT(?string $actualPriceVAT): self
     {
         $this->actualPriceVAT = $actualPriceVAT;
+
+        return $this;
+    }
+
+    public function getOrderNumber(): ?Order
+    {
+        return $this->orderNumber;
+    }
+
+    public function setOrderNumber(?Order $orderNumber): self
+    {
+        $this->orderNumber = $orderNumber;
+
+        return $this;
+    }
+
+    public function getFlower(): ?Flower
+    {
+        return $this->flower;
+    }
+
+    public function setFlower(?Flower $flower): self
+    {
+        $this->flower = $flower;
 
         return $this;
     }

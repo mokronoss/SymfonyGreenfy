@@ -26,6 +26,11 @@ class DailyInventory
      */
     private $dateOfInventory;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Flower", inversedBy="dailyInventory")
+     */
+    private $flower;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +56,18 @@ class DailyInventory
     public function setDateOfInventory(?\DateTimeInterface $dateOfInventory): self
     {
         $this->dateOfInventory = $dateOfInventory;
+
+        return $this;
+    }
+
+    public function getFlower(): ?Flower
+    {
+        return $this->flower;
+    }
+
+    public function setFlower(?Flower $flower): self
+    {
+        $this->flower = $flower;
 
         return $this;
     }
