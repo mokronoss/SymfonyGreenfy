@@ -22,7 +22,7 @@ class CompanyAddress
     private $companyName;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=200)
      */
     private $street;
 
@@ -32,14 +32,19 @@ class CompanyAddress
     private $streetNumber;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $appartNumber;
 
     /**
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
-    private $phone;
+    private $city;
+
+    /**
+     * @ORM\Column(type="string", length=200)
+     */
+    private $zipcode;
 
     /**
      * @ORM\Column(type="string", length=150)
@@ -49,7 +54,12 @@ class CompanyAddress
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $zipCode;
+    private $phone;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isDelivery;
 
     public function getId(): ?int
     {
@@ -92,26 +102,38 @@ class CompanyAddress
         return $this;
     }
 
-    public function getAppartNumber(): ?int
+    public function getAppartNumber(): ?string
     {
         return $this->appartNumber;
     }
 
-    public function setAppartNumber(?int $appartNumber): self
+    public function setAppartNumber(?string $appartNumber): self
     {
         $this->appartNumber = $appartNumber;
 
         return $this;
     }
 
-    public function getPhone(): ?string
+    public function getCity(): ?string
     {
-        return $this->phone;
+        return $this->city;
     }
 
-    public function setPhone(?string $phone): self
+    public function setCity(string $city): self
     {
-        $this->phone = $phone;
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getZipcode(): ?string
+    {
+        return $this->zipcode;
+    }
+
+    public function setZipcode(string $zipcode): self
+    {
+        $this->zipcode = $zipcode;
 
         return $this;
     }
@@ -128,14 +150,26 @@ class CompanyAddress
         return $this;
     }
 
-    public function getZipCode(): ?string
+    public function getPhone(): ?string
     {
-        return $this->zipCode;
+        return $this->phone;
     }
 
-    public function setZipCode(string $zipCode): self
+    public function setPhone(string $phone): self
     {
-        $this->zipCode = $zipCode;
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getIsDelivery(): ?bool
+    {
+        return $this->isDelivery;
+    }
+
+    public function setIsDelivery(?bool $isDelivery): self
+    {
+        $this->isDelivery = $isDelivery;
 
         return $this;
     }
