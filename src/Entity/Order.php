@@ -38,10 +38,6 @@ class Order
      */
     private $client;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\CompanyAddress", mappedBy="orderNumber")
-     */
-    private $deliveryAddress;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\PaymentType", inversedBy="ListOfOrders")
@@ -52,7 +48,6 @@ class Order
     public function __construct()
     {
         $this->ListOfOrderLines = new ArrayCollection();
-        $this->deliveryAddress = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -123,37 +118,6 @@ class Order
     public function setClient(?Client $client): self
     {
         $this->client = $client;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|CompanyAddress[]
-     */
-    public function getDeliveryAddress(): Collection
-    {
-        return $this->deliveryAddress;
-    }
-
-    public function addDeliveryAddress(CompanyAddress $deliveryAddress): self
-    {
-        if (!$this->deliveryAddress->contains($deliveryAddress)) {
-            $this->deliveryAddress[] = $deliveryAddress;
-            $deliveryAddress->setOrderNumber($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDeliveryAddress(CompanyAddress $deliveryAddress): self
-    {
-        if ($this->deliveryAddress->contains($deliveryAddress)) {
-            $this->deliveryAddress->removeElement($deliveryAddress);
-            // set the owning side to null (unless already changed)
-            if ($deliveryAddress->getOrderNumber() === $this) {
-                $deliveryAddress->setOrderNumber(null);
-            }
-        }
 
         return $this;
     }

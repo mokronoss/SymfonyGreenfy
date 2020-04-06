@@ -66,10 +66,6 @@ class CompanyAddress
      */
     private $client;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Order", inversedBy="deliveryAddress")
-     */
-    private $orderNumber;
 
     public function getId(): ?int
     {
@@ -196,15 +192,4 @@ class CompanyAddress
         return $this;
     }
 
-    public function getOrderNumber(): ?Order
-    {
-        return $this->orderNumber;
-    }
-
-    public function setOrderNumber(?Order $orderNumber): self
-    {
-        $this->orderNumber = $orderNumber;
-
-        return $this;
-    }
 }
