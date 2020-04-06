@@ -44,6 +44,7 @@
     <panel_attributes>_PaymentType_
 --
 - paymentType : string
+- paymentLimit : decimal
 
 </panel_attributes>
     <additional_attributes/>
@@ -59,6 +60,7 @@
     <panel_attributes>_PlantType_
 --
 - name : string
+- plantFamilly :string
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -72,8 +74,8 @@
     </coordinates>
     <panel_attributes>_Order_
 --
-- numCommande : string
-- dateCommande :dateTime
+- numOrder : string
+- dateOrder :dateTime
 
 
 
@@ -88,7 +90,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
+      <x>21</x>
       <y>518</y>
       <w>161</w>
       <h>98</h>
@@ -106,17 +108,19 @@
       <x>350</x>
       <y>98</y>
       <w>119</w>
-      <h>105</h>
+      <h>126</h>
     </coordinates>
-    <panel_attributes>_DeliveryAddress_
+    <panel_attributes>_CompanyAddress_
 --
 - companyName : string
 - street : string
 - streetNumber : int
-- appartNumber : int
+- appartNumber : string
+- city : string
 - zipCode : string
 - country : string
 - phone : string
+- isDelivery : bool
 
 
 </panel_attributes>
@@ -300,6 +304,7 @@ has
     <panel_attributes>_Color_
 --
 - name : string
+- similiarColor : string
 
 
 
@@ -407,7 +412,7 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>0</x>
+      <x>21</x>
       <y>427</y>
       <w>112</w>
       <h>49</h>
@@ -420,67 +425,31 @@ bg=yellow</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>189</x>
-      <y>98</y>
-      <w>119</w>
-      <h>105</h>
-    </coordinates>
-    <panel_attributes>_CompanyAddress_
---
-- companyName : string
-- street : string
-- streetNumber : int
-- appartNumber : int
-- zipCode : string
-- country : string
-- phone : string
-
-
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>245</x>
-      <y>196</y>
-      <w>35</w>
-      <h>133</h>
-    </coordinates>
-    <panel_attributes>m1=0..1
-m2=0..*
-bg=black
-has</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
       <x>301</x>
-      <y>196</y>
+      <y>217</y>
       <w>91</w>
-      <h>133</h>
+      <h>112</h>
     </coordinates>
     <panel_attributes>m1=0..*
 m2=0..1
 bg=black
 has</panel_attributes>
-    <additional_attributes>100.0;10.0;10.0;170.0</additional_attributes>
+    <additional_attributes>100.0;10.0;10.0;140.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>434</x>
-      <y>196</y>
+      <y>217</y>
       <w>98</w>
-      <h>133</h>
+      <h>112</h>
     </coordinates>
     <panel_attributes>m1=0..*
 m2=0..1
 isDelivered</panel_attributes>
-    <additional_attributes>10.0;10.0;100.0;170.0</additional_attributes>
+    <additional_attributes>10.0;10.0;100.0;140.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
@@ -541,14 +510,15 @@ has
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>672</x>
+      <x>700</x>
       <y>224</y>
-      <w>168</w>
-      <h>105</h>
+      <w>133</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>set OrderLine 
 quantites * flower * prix
-* </panel_attributes>
+* 
+bg=yellow</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
