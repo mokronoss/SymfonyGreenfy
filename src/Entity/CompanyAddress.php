@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -65,6 +67,16 @@ class CompanyAddress
      * @ORM\ManyToOne(targetEntity="App\Entity\Client", inversedBy="addresses")
      */
     private $client;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Order", mappedBy="deliveryAddress")
+     */
+    private $ListOfOrders;
+
+    public function __construct()
+    {
+        $this->ListOfOrders = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -188,6 +200,37 @@ class CompanyAddress
     public function setClient(?Client $client): self
     {
         $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Order[]
+     */
+    public function getListOfOrders(): Collection
+    {
+        return $this->ListOfOrders;
+    }
+
+    public function addListOfOrder(Order $listOfOrder): self
+    {
+        if (!$this->ListOfOrders->contains($listOfOrder)) {
+            $this->ListOfOrders[] = $listOfOrder;
+            $listOfOrder->setDeliveryAddress($this);
+        }
+
+        return $this;
+    }
+
+    public function removeListOfOrder(Order $listOfOrder): self
+    {
+        if ($this->ListOfOrders->contains($listOfOrder)) {
+            $this->ListOfOrders->removeElement($listOfOrder);
+            // set the owning side to null (unless already changed)
+            if ($listOfOrder->getDeliveryAddress() === $this) {
+                $listOfOrder->setDeliveryAddress(null);
+            }
+        }
 
         return $this;
     }

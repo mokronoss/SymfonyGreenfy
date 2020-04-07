@@ -45,6 +45,11 @@ class Order
      */
     private $payment;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\CompanyAddress", inversedBy="ListOfOrders")
+     */
+    private $deliveryAddress;
+
     public function __construct()
     {
         $this->ListOfOrderLines = new ArrayCollection();
@@ -130,6 +135,18 @@ class Order
     public function setPayment(?PaymentType $payment): self
     {
         $this->payment = $payment;
+
+        return $this;
+    }
+
+    public function getDeliveryAddress(): ?CompanyAddress
+    {
+        return $this->deliveryAddress;
+    }
+
+    public function setDeliveryAddress(?CompanyAddress $deliveryAddress): self
+    {
+        $this->deliveryAddress = $deliveryAddress;
 
         return $this;
     }
